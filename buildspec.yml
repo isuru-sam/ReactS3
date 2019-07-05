@@ -1,7 +1,9 @@
 version: 0.2
 
 phases:
-  install: 
+  install:
+    runtime-versions:
+      nodejs: 12.5.0
     commands:
       - npm i npm@latest -g
       - pip install --upgrade pip
@@ -14,5 +16,4 @@ phases:
       - npm run build:$ENVIRONMENT
   post_build:
     commands:
-      - aws s3 sync ./build $S3_BUCKET 
-
+      - aws s3 sync ./build $S3_BUCKET
